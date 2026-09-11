@@ -1,0 +1,190 @@
+[
+  {
+    "code": "005930",
+    "name": "삼성전자",
+    "market": "코스피",
+    "currentPrice": 179700,
+    "change": -400,
+    "changeRate": -0.22,
+    "openPrice": 172100,
+    "highPrice": 181700,
+    "lowPrice": 172000,
+    "volume": "29,113천",
+    "marketCap": "1,063조",
+    "isFavorite": true,
+    "dailyPrices": [
+      {
+        "date": "03.27",
+        "close": 179700,
+        "change": -400,
+        "volume": "29,113,466"
+      },
+      {
+        "date": "03.26",
+        "close": 180100,
+        "change": 1200,
+        "volume": "32,074,131"
+      },
+      {
+        "date": "03.25",
+        "close": 178900,
+        "change": 900,
+        "volume": "27,441,209"
+      },
+      { "date": "03.24", "close": 178000, "change": 0, "volume": "31,882,540" },
+      { "date": "03.23", "close": 178000, "change": 0, "volume": "29,780,397" }
+    ]
+  },
+  {
+    "code": "000660",
+    "name": "SK하이닉스",
+    "market": "코스피",
+    "currentPrice": 412500,
+    "change": 9500,
+    "changeRate": 2.36,
+    "openPrice": 405000,
+    "highPrice": 416000,
+    "lowPrice": 402000,
+    "volume": "4,821천",
+    "marketCap": "300조",
+    "isFavorite": true,
+    "dailyPrices": [
+      {
+        "date": "03.27",
+        "close": 412500,
+        "change": 9500,
+        "volume": "4,821,120"
+      },
+      {
+        "date": "03.26",
+        "close": 403000,
+        "change": -2000,
+        "volume": "3,910,200"
+      }
+    ]
+  },
+  {
+    "code": "035720",
+    "name": "카카오",
+    "market": "코스피",
+    "currentPrice": 61300,
+    "change": -800,
+    "changeRate": -1.29,
+    "openPrice": 62000,
+    "highPrice": 62500,
+    "lowPrice": 60900,
+    "volume": "1,850천",
+    "marketCap": "27조",
+    "isFavorite": true,
+    "dailyPrices": [
+      { "date": "03.27", "close": 61300, "change": -800, "volume": "1,850,300" }
+    ]
+  },
+  {
+    "code": "247540",
+    "name": "에코프로비엠",
+    "market": "코스닥",
+    "currentPrice": 195400,
+    "change": 0,
+    "changeRate": 0.0,
+    "openPrice": 195400,
+    "highPrice": 198000,
+    "lowPrice": 194000,
+    "volume": "950천",
+    "marketCap": "19조",
+    "isFavorite": true,
+    "dailyPrices": [
+      { "date": "03.27", "close": 195400, "change": 0, "volume": "950,210" }
+    ]
+  },
+  {
+    "code": "373220",
+    "name": "LG에너지솔루션",
+    "market": "코스피",
+    "currentPrice": null,
+    "change": null,
+    "changeRate": null,
+    "openPrice": 0,
+    "highPrice": 0,
+    "lowPrice": 0,
+    "volume": "-",
+    "marketCap": "-",
+    "isFavorite": true,
+    "dailyPrices": []
+  },
+  {
+    "code": "005935",
+    "name": "삼성전자우",
+    "market": "코스피",
+    "currentPrice": 63400,
+    "change": 200,
+    "changeRate": 0.32,
+    "openPrice": 63200,
+    "highPrice": 63900,
+    "lowPrice": 63000,
+    "volume": "1,200천",
+    "marketCap": "52조",
+    "isFavorite": false,
+    "dailyPrices": []
+  },
+  {
+    "code": "207940",
+    "name": "삼성바이오로직스",
+    "market": "코스피",
+    "currentPrice": 780000,
+    "change": -5000,
+    "changeRate": -0.64,
+    "openPrice": 785000,
+    "highPrice": 789000,
+    "lowPrice": 778000,
+    "volume": "180천",
+    "marketCap": "55조",
+    "isFavorite": false,
+    "dailyPrices": []
+  },
+  {
+    "code": "018260",
+    "name": "삼성에스디에스",
+    "market": "코스피",
+    "currentPrice": 156000,
+    "change": 1500,
+    "changeRate": 0.97,
+    "openPrice": 154500,
+    "highPrice": 157000,
+    "lowPrice": 154000,
+    "volume": "210천",
+    "marketCap": "12조",
+    "isFavorite": false,
+    "dailyPrices": []
+  },
+  {
+    "code": "010140",
+    "name": "삼성중공업",
+    "market": "코스피",
+    "currentPrice": 9800,
+    "change": 120,
+    "changeRate": 1.24,
+    "openPrice": 9650,
+    "highPrice": 9850,
+    "lowPrice": 9600,
+    "volume": "5,400천",
+    "marketCap": "8조",
+    "isFavorite": false,
+    "dailyPrices": []
+  },
+  {
+    "code": "028260",
+    "name": "삼성물산",
+    "market": "코스피",
+    "currentPrice": 142000,
+    "change": -1000,
+    "changeRate": -0.7,
+    "openPrice": 143000,
+    "highPrice": 144500,
+    "lowPrice": 141000,
+    "volume": "320천",
+    "marketCap": "26조",
+    "isFavorite": false,
+    "dailyPrices": []
+  }
+]
