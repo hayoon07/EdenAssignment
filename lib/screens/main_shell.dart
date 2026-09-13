@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../theme/theme.dart';
 import '../models/stock.dart';
+import '../screens/stock_detail.dart';
 
 enum SortType {
   koreanAlpha('가나다순'),
@@ -94,6 +95,26 @@ class _MainShellState extends State<MainShell> {
       icon: stock.isFavorite ? Icons.star : Icons.star_border,
       iconColor: stock.isFavorite ? colors.favoriteActive : colors.textDisabled,
     );
+  }
+
+  // 종목 상세 화면으로 이동, 돌아올 때 관심 상태 동기화
+  Future<void> _navigateToDetail(Stock stock) async {
+    final bool? isFavoriteChanged = await Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => StockDetailScreen(
+                  stockCode: stock.code,
+                  stockName: stock.name,
+                  market: stock.market,
+                  initialIsFavorite: stock.isFavorite,
+                )));
+
+    // 상세 화면에서 관심 상태 변경되어 돌아온 경우 목록 갱신
+    if (isFavoriteChanged != null && isFavoriteChanged != stock.isFavorite) {
+      setState(() {
+        stock.isFavorite = isFavoriteChanged;
+      });
+    }
   }
 
   void _showToast(
@@ -196,7 +217,7 @@ class _MainShellState extends State<MainShell> {
                 ? _buildWatchlist(colors, dimens)
                 : _buildSearchScreen(colors, dimens),
 
-            // 토스트 오버레이 (04, 05 시안)
+            // 토스트 오버레이
             if (_toastMessage != null)
               Positioned(
                 left: dimens.space4,
@@ -339,81 +360,85 @@ class _MainShellState extends State<MainShell> {
   Widget _buildWatchlistTile(Stock stock, AppColors colors, AppDimens dimens) {
     final isSkeleton = stock.currentPrice == null;
 
-    return Container(
-      constraints: BoxConstraints(minHeight: dimens.rowMinHeight),
-      padding: EdgeInsets.symmetric(
-          horizontal: dimens.space4, vertical: dimens.space2),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                stock.name,
-                style: TextStyle(
-                  color: colors.textPrimary,
-                  fontSize: 15,
-                  fontWeight: AppTypography.medium,
-                ),
-              ),
-              SizedBox(height: dimens.space1),
-              Text(
-                '${stock.code} · ${stock.market}',
-                style: TextStyle(
-                  color: colors.textDisabled,
-                  fontSize: 12,
-                ),
-              ),
-            ],
-          ),
-          if (isSkeleton)
+    // 관심 목록 행 클릭 시 상세 페이지 이동
+    return InkWell(
+      onTap: () => _navigateToDetail(stock),
+      child: Container(
+        constraints: BoxConstraints(minHeight: dimens.rowMinHeight),
+        padding: EdgeInsets.symmetric(
+            horizontal: dimens.space4, vertical: dimens.space2),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
             Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Container(
-                  width: 55,
-                  height: 14,
-                  decoration: BoxDecoration(
-                    color: colors.feedbackSkeleton,
-                    borderRadius: BorderRadius.circular(dimens.radiusSm),
-                  ),
-                ),
-                SizedBox(height: dimens.space1),
-                Container(
-                  width: 40,
-                  height: 12,
-                  decoration: BoxDecoration(
-                    color: colors.feedbackSkeleton,
-                    borderRadius: BorderRadius.circular(dimens.radiusSm),
-                  ),
-                ),
-              ],
-            )
-          else
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  _formatPrice(stock.currentPrice!),
+                  stock.name,
                   style: TextStyle(
                     color: colors.textPrimary,
                     fontSize: 15,
-                    fontWeight: AppTypography.bold,
+                    fontWeight: AppTypography.medium,
                   ),
                 ),
                 SizedBox(height: dimens.space1),
                 Text(
-                  _formatChangeText(stock.change!, stock.changeRate!),
+                  '${stock.code} · ${stock.market}',
                   style: TextStyle(
-                    color: _getChangeColor(stock.change!, colors),
+                    color: colors.textDisabled,
                     fontSize: 12,
-                    fontWeight: AppTypography.medium,
                   ),
                 ),
               ],
             ),
-        ],
+            if (isSkeleton)
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Container(
+                    width: 55,
+                    height: 14,
+                    decoration: BoxDecoration(
+                      color: colors.feedbackSkeleton,
+                      borderRadius: BorderRadius.circular(dimens.radiusSm),
+                    ),
+                  ),
+                  SizedBox(height: dimens.space1),
+                  Container(
+                    width: 40,
+                    height: 12,
+                    decoration: BoxDecoration(
+                      color: colors.feedbackSkeleton,
+                      borderRadius: BorderRadius.circular(dimens.radiusSm),
+                    ),
+                  ),
+                ],
+              )
+            else
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Text(
+                    _formatPrice(stock.currentPrice!),
+                    style: TextStyle(
+                      color: colors.textPrimary,
+                      fontSize: 15,
+                      fontWeight: AppTypography.bold,
+                    ),
+                  ),
+                  SizedBox(height: dimens.space1),
+                  Text(
+                    _formatChangeText(stock.change!, stock.changeRate!),
+                    style: TextStyle(
+                      color: _getChangeColor(stock.change!, colors),
+                      fontSize: 12,
+                      fontWeight: AppTypography.medium,
+                    ),
+                  ),
+                ],
+              ),
+          ],
+        ),
       ),
     );
   }
@@ -576,43 +601,47 @@ class _MainShellState extends State<MainShell> {
 
   Widget _buildSearchResultTile(
       Stock stock, AppColors colors, AppDimens dimens) {
-    return Container(
-      constraints: BoxConstraints(minHeight: dimens.rowMinHeight),
-      padding: EdgeInsets.symmetric(
-          horizontal: dimens.space4, vertical: dimens.space2),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildHighlightedText(stock.name, _searchQuery, colors),
-              SizedBox(height: dimens.space1),
-              Text(
-                '${stock.code} · ${stock.market}',
-                style: TextStyle(
-                  color: colors.textDisabled,
-                  fontSize: 12,
+    // 검색 결과 행 클릭 시 상세 페이지 이동
+    return InkWell(
+      onTap: () => _navigateToDetail(stock),
+      child: Container(
+        constraints: BoxConstraints(minHeight: dimens.rowMinHeight),
+        padding: EdgeInsets.symmetric(
+            horizontal: dimens.space4, vertical: dimens.space2),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _buildHighlightedText(stock.name, _searchQuery, colors),
+                SizedBox(height: dimens.space1),
+                Text(
+                  '${stock.code} · ${stock.market}',
+                  style: TextStyle(
+                    color: colors.textDisabled,
+                    fontSize: 12,
+                  ),
                 ),
-              ),
-            ],
-          ),
-          IconButton(
-            onPressed: () => _toggleFavorite(stock),
-            icon: Icon(
-              stock.isFavorite ? Icons.star : Icons.star_border,
-              color: stock.isFavorite
-                  ? colors.favoriteActive
-                  : colors.textDisabled,
-              size: dimens.iconMd,
+              ],
             ),
-          ),
-        ],
+            IconButton(
+              onPressed: () => _toggleFavorite(stock),
+              icon: Icon(
+                stock.isFavorite ? Icons.star : Icons.star_border,
+                color: stock.isFavorite
+                    ? colors.favoriteActive
+                    : colors.textDisabled,
+                size: dimens.iconMd,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 
-  // 검색어 일치 텍스트 하이라이트 (searchHighlight 토큰 적용)
+  // 검색어 일치 텍스트 하이라이트
   Widget _buildHighlightedText(String text, String query, AppColors colors) {
     if (query.isEmpty || !text.contains(query)) {
       return Text(

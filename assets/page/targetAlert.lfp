@@ -1,0 +1,42 @@
+#
+{
+  "version": 3,
+  "page": {
+    "creator": "백하윤",
+    "createDate": "2026-09-10 18:43:25.295417",
+    "lastModifyer": "백하윤",
+    "lastModifyDate": "2026-09-10 18:43:25.295417"
+  },
+  "forms": [
+    {
+      "statetransitions": null,
+      "luactions": [],
+      "detectors": [],
+      "id": "unknown",
+      "title": "",
+      "nativeBinder": null,
+      "objet": {
+        "bulb": "Jet",
+        "uuid": "_XpNng8lXj",
+        "property": {
+          "id": "unknown",
+          "title": ""
+        }
+      },
+      "bindinginfos": [],
+      "script": "      require('base.js');\n      // 📁 --------------------------------------------------------------\n      // script: 백하윤 (hayun@edencrew.com)\n      // date: 2026.09.10\n      // detail: \n      // -----------------------------------------------------------------\n      // 수정이력:\n      \n      // 💊 --------------------------------------------------------------\n      class TargetAlertVM extends BaseVM {\n        // 🎫 ------------------------------------------------------------\n        constructor() {\n          super();\n          \n        }\n        // 🎫 ------------------------------------------------------------\n        onStart() {\n\n        }\n        // 🎫 ------------------------------------------------------------\n        onMessage(key,data) {\n\n        }\n      }\n      let jvm = TargetAlertVM.setup();\n",
+      "provinstance": [],
+      "contentsdm": [],
+      "variable": [],
+      "version": 3,
+      "resolution": {
+        "key": "iphone12pro",
+        "name": "iPhone 12 Pro",
+        "width": 390.0,
+        "height": 844.0,
+        "fold": false
+      }
+    }
+  ],
+  "localization": {}
+}

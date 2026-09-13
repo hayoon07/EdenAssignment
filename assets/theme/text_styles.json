@@ -1,0 +1,616 @@
+{
+  "types": [
+    {
+      "name": "mobile",
+      "id": "mobile",
+      "default": true
+    },
+    {
+      "name": "tablet",
+      "id": "tablet",
+      "default": false
+    },
+    {
+      "name": "desktop",
+      "id": "desktop",
+      "default": false
+    }
+  ],
+  "fontStyles": [
+    {
+      "key": 0,
+      "name": "display1-regular",
+      "id": "7759b82ad1110dfdb46c1216d9db0f1b5d180f44",
+      "type": "custom",
+      "category": null,
+      "value": [
+        {
+          "fontSize": 32.0,
+          "fontWeight": 400,
+          "letterSpacing": -0.06,
+          "height": 1.35
+        },
+        {
+          "fontSize": 40.0,
+          "fontWeight": 400,
+          "letterSpacing": -0.08,
+          "height": 1.35
+        },
+        {
+          "fontSize": 48.0,
+          "fontWeight": 400,
+          "letterSpacing": -0.1,
+          "height": 1.35
+        }
+      ]
+    },
+    {
+      "key": 1,
+      "name": "display2-regular",
+      "id": "e7c2179c1be43ab9101b19d03086796279c9befa",
+      "type": "custom",
+      "category": null,
+      "value": [
+        {
+          "fontSize": 24.0,
+          "fontWeight": 400,
+          "letterSpacing": -0.05,
+          "height": 1.35
+        },
+        {
+          "fontSize": 32.0,
+          "fontWeight": 400,
+          "letterSpacing": -0.06,
+          "height": 1.35
+        },
+        {
+          "fontSize": 36.0,
+          "fontWeight": 400,
+          "letterSpacing": -0.07,
+          "height": 1.35
+        }
+      ]
+    },
+    {
+      "key": 2,
+      "name": "heading3-semibold",
+      "id": "68ebefcf835154962d05f53b968e077a9d9c5ea9",
+      "type": "custom",
+      "category": null,
+      "value": [
+        {
+          "fontSize": 16.0,
+          "fontWeight": 600,
+          "letterSpacing": -0.03,
+          "height": 1.35
+        },
+        {
+          "fontSize": 16.0,
+          "fontWeight": 600,
+          "letterSpacing": -0.03,
+          "height": 1.35
+        },
+        {
+          "fontSize": 16.0,
+          "fontWeight": 600,
+          "letterSpacing": -0.03,
+          "height": 1.35
+        }
+      ]
+    },
+    {
+      "key": 3,
+      "name": "heading1-semibold",
+      "id": "191cf8cdf7b559bd492097f175cbd36f5431d6ad",
+      "type": "custom",
+      "category": null,
+      "value": [
+        {
+          "fontSize": 20.0,
+          "fontWeight": 600,
+          "letterSpacing": -0.04,
+          "height": 1.35
+        },
+        {
+          "fontSize": 22.0,
+          "fontWeight": 600,
+          "letterSpacing": -0.04,
+          "height": 1.35
+        },
+        {
+          "fontSize": 22.0,
+          "fontWeight": 600,
+          "letterSpacing": -0.04,
+          "height": 1.35
+        }
+      ]
+    },
+    {
+      "key": 4,
+      "name": "heading2-semibold",
+      "id": "13a937ca7b9fc4f306e49cbe519fdc49457036f2",
+      "type": "custom",
+      "category": null,
+      "value": [
+        {
+          "fontSize": 18.0,
+          "fontWeight": 600,
+          "letterSpacing": -0.04,
+          "height": 1.35
+        },
+        {
+          "fontSize": 18.0,
+          "fontWeight": 600,
+          "letterSpacing": -0.04,
+          "height": 1.35
+        },
+        {
+          "fontSize": 18.0,
+          "fontWeight": 600,
+          "letterSpacing": -0.04,
+          "height": 1.35
+        }
+      ]
+    },
+    {
+      "key": 7,
+      "name": "body1-regular",
+      "id": "2b94f2e62bd443f20cdec87d2911fe3d52e9de7e",
+      "type": "custom",
+      "category": null,
+      "value": [
+        {
+          "fontSize": 15.0,
+          "fontWeight": 400,
+          "letterSpacing": -0.03,
+          "height": 1.35
+        },
+        {
+          "fontSize": 14.0,
+          "fontWeight": 400,
+          "letterSpacing": -0.03,
+          "height": 1.35
+        },
+        {
+          "fontSize": 14.0,
+          "fontWeight": 400,
+          "letterSpacing": -0.03,
+          "height": 1.35
+        }
+      ]
+    },
+    {
+      "key": 8,
+      "name": "body1-medium",
+      "id": "7578ef3f951cc7055917367f1e575b1815d64529",
+      "type": "custom",
+      "category": null,
+      "value": [
+        {
+          "fontSize": 15.0,
+          "fontWeight": 500,
+          "letterSpacing": -0.03,
+          "height": 1.35
+        },
+        {
+          "fontSize": 14.0,
+          "fontWeight": 500,
+          "letterSpacing": -0.03,
+          "height": 1.35
+        },
+        {
+          "fontSize": 14.0,
+          "fontWeight": 500,
+          "letterSpacing": -0.03,
+          "height": 1.35
+        }
+      ]
+    },
+    {
+      "key": 9,
+      "name": "body1-semibold",
+      "id": "23389dd788f33c6e9a7a60d77d170da4347df3f7",
+      "type": "custom",
+      "category": null,
+      "value": [
+        {
+          "fontSize": 15.0,
+          "fontWeight": 600,
+          "letterSpacing": -0.03,
+          "height": 1.35
+        },
+        {
+          "fontSize": 14.0,
+          "fontWeight": 600,
+          "letterSpacing": -0.03,
+          "height": 1.35
+        },
+        {
+          "fontSize": 14.0,
+          "fontWeight": 600,
+          "letterSpacing": -0.03,
+          "height": 1.35
+        }
+      ]
+    },
+    {
+      "key": 10,
+      "name": "body2-regular",
+      "id": "3938ad0b50e21daa530f1ff9db85edf3ebe3ea10",
+      "type": "custom",
+      "category": null,
+      "value": [
+        {
+          "fontSize": 14.0,
+          "fontWeight": 400,
+          "letterSpacing": -0.03,
+          "height": 1.35
+        },
+        {
+          "fontSize": 13.0,
+          "fontWeight": 400,
+          "letterSpacing": -0.03,
+          "height": 1.35
+        },
+        {
+          "fontSize": 13.0,
+          "fontWeight": 400,
+          "letterSpacing": -0.03,
+          "height": 1.35
+        }
+      ]
+    },
+    {
+      "key": 11,
+      "name": "body2-medium",
+      "id": "d94f151c6824c3f6e48495eb8249cb98032dc5a8",
+      "type": "custom",
+      "category": null,
+      "value": [
+        {
+          "fontSize": 14.0,
+          "fontWeight": 500,
+          "letterSpacing": -0.03,
+          "height": 1.35
+        },
+        {
+          "fontSize": 13.0,
+          "fontWeight": 500,
+          "letterSpacing": -0.03,
+          "height": 1.35
+        },
+        {
+          "fontSize": 13.0,
+          "fontWeight": 500,
+          "letterSpacing": -0.03,
+          "height": 1.35
+        }
+      ]
+    },
+    {
+      "key": 12,
+      "name": "body2-semibold",
+      "id": "d50c93fadd242648e53dffd556997d3dfdf7fec0",
+      "type": "custom",
+      "category": null,
+      "value": [
+        {
+          "fontSize": 14.0,
+          "fontWeight": 600,
+          "letterSpacing": -0.03,
+          "height": 1.35
+        },
+        {
+          "fontSize": 13.0,
+          "fontWeight": 600,
+          "letterSpacing": -0.03,
+          "height": 1.35
+        },
+        {
+          "fontSize": 13.0,
+          "fontWeight": 600,
+          "letterSpacing": -0.03,
+          "height": 1.35
+        }
+      ]
+    },
+    {
+      "key": 15,
+      "name": "caption1-regular",
+      "id": "81be9309439d44767ca2393721fba133f807560d",
+      "type": "custom",
+      "category": null,
+      "value": [
+        {
+          "fontSize": 12.0,
+          "fontWeight": 400,
+          "letterSpacing": -0.02,
+          "height": 1.35
+        },
+        {
+          "fontSize": 12.0,
+          "fontWeight": 400,
+          "letterSpacing": -0.02,
+          "height": 1.35
+        },
+        {
+          "fontSize": 12.0,
+          "fontWeight": 400,
+          "letterSpacing": -0.02,
+          "height": 1.35
+        }
+      ]
+    },
+    {
+      "key": 16,
+      "name": "caption2-regular",
+      "id": "48db90faba457ab48d28515e27cb78ef868deb6a",
+      "type": "custom",
+      "category": null,
+      "value": [
+        {
+          "fontSize": 10.0,
+          "fontWeight": 400,
+          "letterSpacing": -0.02,
+          "height": 1.35
+        },
+        {
+          "fontSize": 10.0,
+          "fontWeight": 400,
+          "letterSpacing": -0.02,
+          "height": 1.35
+        },
+        {
+          "fontSize": 10.0,
+          "fontWeight": 400,
+          "letterSpacing": -0.02,
+          "height": 1.35
+        }
+      ]
+    },
+    {
+      "key": 21,
+      "name": "body3-medium",
+      "id": "fb98e3803c3a2f5e20931914e2f716d07834cce1",
+      "type": "custom",
+      "category": null,
+      "value": [
+        {
+          "fontSize": 13.0,
+          "fontWeight": 500,
+          "letterSpacing": -0.03,
+          "height": 1.35
+        },
+        {
+          "fontSize": 12.0,
+          "fontWeight": 500,
+          "letterSpacing": -0.02,
+          "height": 1.35
+        },
+        {
+          "fontSize": 12.0,
+          "fontWeight": 500,
+          "letterSpacing": -0.02,
+          "height": 1.35
+        }
+      ]
+    },
+    {
+      "key": 25,
+      "name": "caption2-semibold",
+      "id": "d9d6c92ba4930c087f05ec7529c19f17a1ff5251",
+      "type": "custom",
+      "category": null,
+      "value": [
+        {
+          "fontSize": 10.0,
+          "fontWeight": 600,
+          "letterSpacing": -0.02,
+          "height": 1.35
+        },
+        {
+          "fontSize": 10.0,
+          "fontWeight": 600,
+          "letterSpacing": -0.02,
+          "height": 1.35
+        },
+        {
+          "fontSize": 10.0,
+          "fontWeight": 600,
+          "letterSpacing": -0.02,
+          "height": 1.35
+        }
+      ]
+    },
+    {
+      "key": 26,
+      "name": "caption1-semibold",
+      "id": "be242396132b4dd82bd7cd5bf136e66b5c9f35b3",
+      "type": "custom",
+      "category": null,
+      "value": [
+        {
+          "fontSize": 12.0,
+          "fontWeight": 600,
+          "letterSpacing": -0.02,
+          "height": 1.35
+        },
+        {
+          "fontSize": 12.0,
+          "fontWeight": 600,
+          "letterSpacing": -0.02,
+          "height": 1.35
+        },
+        {
+          "fontSize": 12.0,
+          "fontWeight": 600,
+          "letterSpacing": -0.02,
+          "height": 1.35
+        }
+      ]
+    },
+    {
+      "key": 29,
+      "name": "body1-regular-multi",
+      "id": "S:737beece386a10f6fc30c496bc008c973ff1f895,",
+      "type": "custom",
+      "category": null,
+      "value": [
+        {
+          "fontSize": 15.0,
+          "fontWeight": 400,
+          "letterSpacing": -0.03,
+          "height": 1.5
+        },
+        {
+          "fontSize": 14.0,
+          "fontWeight": 400,
+          "letterSpacing": -0.03,
+          "height": 1.5
+        },
+        {
+          "fontSize": 14.0,
+          "fontWeight": 400,
+          "letterSpacing": -0.03,
+          "height": 1.5
+        }
+      ]
+    },
+    {
+      "key": 30,
+      "name": "multi-body2-regular",
+      "id": "ccc7adaf6fa8bbbdce8cf5771ac38e54c7e440de",
+      "type": "custom",
+      "category": null,
+      "value": [
+        {
+          "fontSize": 14.0,
+          "fontWeight": 400,
+          "letterSpacing": -0.03,
+          "height": 1.5
+        },
+        {
+          "fontSize": 13.0,
+          "fontWeight": 400,
+          "letterSpacing": -0.03,
+          "height": 1.5
+        },
+        {
+          "fontSize": 13.0,
+          "fontWeight": 400,
+          "letterSpacing": -0.03,
+          "height": 1.5
+        }
+      ]
+    },
+    {
+      "key": 31,
+      "name": "body3-regular",
+      "id": "54372f1046bd058a6a6eec2262513bec0a90a2d0",
+      "type": "custom",
+      "category": null,
+      "value": [
+        {
+          "fontSize": 13.0,
+          "fontWeight": 400,
+          "letterSpacing": -0.03,
+          "height": 1.35
+        },
+        {
+          "fontSize": 12.0,
+          "fontWeight": 400,
+          "letterSpacing": -0.02,
+          "height": 1.35
+        },
+        {
+          "fontSize": 12.0,
+          "fontWeight": 400,
+          "letterSpacing": -0.02,
+          "height": 1.35
+        }
+      ]
+    },
+    {
+      "key": 32,
+      "name": "multi-body3-regular",
+      "id": "8ac04c117b934e62a5b3999dd1679502b23de9a0",
+      "type": "custom",
+      "category": null,
+      "value": [
+        {
+          "fontSize": 13.0,
+          "fontWeight": 400,
+          "letterSpacing": -0.03,
+          "height": 1.5
+        },
+        {
+          "fontSize": 12.0,
+          "fontWeight": 400,
+          "letterSpacing": -0.02,
+          "height": 1.5
+        },
+        {
+          "fontSize": 12.0,
+          "fontWeight": 400,
+          "letterSpacing": -0.02,
+          "height": 1.5
+        }
+      ]
+    },
+    {
+      "key": 33,
+      "name": "body3-semibold",
+      "id": "43bfec84b9f31e0113b031a2bda34863fac86d94",
+      "type": "custom",
+      "category": null,
+      "value": [
+        {
+          "fontSize": 13.0,
+          "fontWeight": 600,
+          "letterSpacing": -0.03,
+          "height": 1.35
+        },
+        {
+          "fontSize": 12.0,
+          "fontWeight": 600,
+          "letterSpacing": -0.02,
+          "height": 1.35
+        },
+        {
+          "fontSize": 12.0,
+          "fontWeight": 600,
+          "letterSpacing": -0.02,
+          "height": 1.35
+        }
+      ]
+    },
+    {
+      "key": 5,
+      "name": "multi-body1-regular",
+      "id": "07d9e7b1bdc37cb10275a22594a50ce3b5a8720c",
+      "type": "custom",
+      "category": null,
+      "value": [
+        {
+          "fontSize": 14.0,
+          "fontWeight": 400,
+          "letterSpacing": 0.0,
+          "height": 1.0
+        },
+        {
+          "fontSize": 14.0,
+          "fontWeight": 400,
+          "letterSpacing": -0.03,
+          "height": 1.5
+        },
+        {
+          "fontSize": 14.0,
+          "fontWeight": 400,
+          "letterSpacing": -0.03,
+          "height": 1.5
+        }
+      ]
+    }
+  ],
+  "customFonts": []
+}
