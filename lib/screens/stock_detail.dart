@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
+import '../theme/app_theme.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_dimens.dart';
+import '../models/stock.dart';
 
 class StockDetailScreen extends StatefulWidget {
-  final String stockCode;
-  final String stockName;
-  final String market;
-  final bool initialIsFavorite;
+  final Stock stock;
 
   const StockDetailScreen({
     super.key,
-    required this.stockCode,
-    required this.stockName,
-    required this.market,
-    this.initialIsFavorite = false,
+    required this.stock,
   });
 
   @override
@@ -28,16 +24,24 @@ class _StockDetailScreenState extends State<StockDetailScreen> {
   @override
   void initState() {
     super.initState();
-    _isFavorite = widget.initialIsFavorite;
+    _isFavorite = widget.stock.isFavorite;
   }
 
   @override
   Widget build(BuildContext context) {
-    // 디자인 토큰 바인딩
-    final colors =
-        Theme.of(context).extension<AppColors>() ?? const AppColors.dark();
-    final dimens =
-        Theme.of(context).extension<AppDimens>() ?? const AppDimens.standard();
+    final colors = context.colors;
+    final dimens = context.dimens;
+    final stock = widget.stock;
+
+    // 실제 데이터 있는 경우 값 추출 (없으면 기본 0)
+    final currentPriceStr =
+        stock.currentPrice != null ? _formatPrice(stock.currentPrice!) : '-';
+    final changeVal = stock.change ?? 0;
+    final changeRateVal = stock.changeRate ?? 0.0;
+    final changeColor = _getChangeColor(changeVal, colors);
+    final changeText = stock.currentPrice != null
+        ? _formatChangeText(changeVal, changeRateVal)
+        : '정보 없음';
 
     // 안드로이드 시스템 백 버튼이나 상단 뒤로 가기 시 변경된 관심 상태를 전달하기 위한 PopScope
     return PopScope(
@@ -61,16 +65,16 @@ class _StockDetailScreenState extends State<StockDetailScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                widget.stockName,
+                stock.name,
                 style: TextStyle(
                   color: colors.textPrimary,
-                  fontSize: 16,
+                  fontSize: 12,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               SizedBox(height: dimens.space1),
               Text(
-                '${widget.stockCode} · ${widget.market}',
+                '${stock.code} · ${stock.market}',
                 style: TextStyle(color: colors.textSecondary, fontSize: 12),
               ),
             ],
@@ -87,6 +91,7 @@ class _StockDetailScreenState extends State<StockDetailScreen> {
               onPressed: () {
                 setState(() {
                   _isFavorite = !_isFavorite;
+                  stock.isFavorite = _isFavorite; // 원본 모델 상태 동기화
                 });
               },
             ),
@@ -103,7 +108,7 @@ class _StockDetailScreenState extends State<StockDetailScreen> {
                 textBaseline: TextBaseline.alphabetic,
                 children: [
                   Text(
-                    '71,500',
+                    currentPriceStr,
                     style: TextStyle(
                       color: colors.textPrimary,
                       fontSize: 28,
@@ -115,16 +120,18 @@ class _StockDetailScreenState extends State<StockDetailScreen> {
                       style:
                           TextStyle(color: colors.textSecondary, fontSize: 14)),
                   SizedBox(width: dimens.space3),
-                  Icon(Icons.arrow_drop_up,
-                      color: colors.priceUpText, size: 24),
-                  Text(
-                    '+1,200 (+1.71%)',
-                    style: TextStyle(
-                      color: colors.priceUpText,
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
+                  if (stock.currentPrice != null) ...[
+                    Icon(Icons.arrow_drop_up,
+                        color: colors.priceUpText, size: 24),
+                    Text(
+                      changeText,
+                      style: TextStyle(
+                        color: colors.priceUpText,
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
+                  ]
                 ],
               ),
               SizedBox(height: dimens.space6),
@@ -192,14 +199,14 @@ class _StockDetailScreenState extends State<StockDetailScreen> {
                 ),
                 alignment: Alignment.center,
                 child: Text(
-                  '$_selectedPeriod 캔들 차트 영역\n(chartLineUp: 빨강 / chartLineDown: 파랑)',
+                  '${stock.name} - $_selectedPeriod 캔들 차트 영역\n(chartLineUp / chartLineDown 적용)',
                   textAlign: TextAlign.center,
                   style: TextStyle(color: colors.chartAxisLabel, fontSize: 14),
                 ),
               ),
               SizedBox(height: dimens.space6),
 
-              // 4. 요약 카드 (시가, 고가, 저가, 거래량, 시가총액 축약 표기)
+              // 4. 요약 카드 (현재 보유 시세 데이터 기반 동적 표시)
               Container(
                 padding: EdgeInsets.all(dimens.space4),
                 decoration: BoxDecoration(
@@ -220,11 +227,15 @@ class _StockDetailScreenState extends State<StockDetailScreen> {
                       ),
                     ),
                     SizedBox(height: dimens.space3),
-                    _buildSummaryRow('시가', '70,500', '고가', '72,000', colors),
+                    _buildSummaryRow('현재가', currentPriceStr, '등락금액',
+                        changeVal != 0 ? _formatPrice(changeVal) : '0', colors),
                     Divider(color: colors.borderSubtle, height: 20),
-                    _buildSummaryRow('저가', '70,200', '거래량', '12,450천', colors),
-                    Divider(color: colors.borderSubtle, height: 20),
-                    _buildSummaryRow('시가총액', '426조', '', '', colors),
+                    _buildSummaryRow(
+                        '상태',
+                        stock.currentPrice != null ? '정상 거래' : '정보 대기중',
+                        '시장',
+                        stock.market,
+                        colors),
                   ],
                 ),
               ),
@@ -274,13 +285,9 @@ class _StockDetailScreenState extends State<StockDetailScreen> {
                       ),
                     ),
                     Divider(color: colors.borderSubtle, height: 1),
-                    // 일별 시세 행 반복
-                    _buildDailyRow('09.13', '71,500', '+1,200', '12,450천',
-                        colors.priceUpText, colors, dimens),
-                    _buildDailyRow('09.12', '70,300', '-500', '9,820천',
-                        colors.priceDownText, colors, dimens),
-                    _buildDailyRow('09.11', '70,800', '+300', '11,100천',
-                        colors.priceUpText, colors, dimens),
+                    // 실제 모델 데이터 연동하거나 HTML 파싱 결과 행 배치
+                    _buildDailyRow('09.13', currentPriceStr, changeText,
+                        '12,450천', changeColor, colors, dimens),
                   ],
                 ),
               ),
@@ -375,4 +382,22 @@ class _StockDetailScreenState extends State<StockDetailScreen> {
       ),
     );
   }
+}
+
+String _formatPrice(int price) {
+  return price.toString().replaceAllMapped(
+        RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
+        (Match m) => '${m[1]},',
+      );
+}
+
+String _formatChangeText(int change, double rate) {
+  final prefix = change > 0 ? '+' : '';
+  return '$prefix${_formatPrice(change)} ($prefix${rate.toStringAsFixed(2)}%)';
+}
+
+Color _getChangeColor(int change, AppColors colors) {
+  if (change > 0) return colors.priceUpText;
+  if (change < 0) return colors.priceDownText;
+  return colors.priceFlatText;
 }

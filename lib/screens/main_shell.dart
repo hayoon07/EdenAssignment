@@ -103,10 +103,7 @@ class _MainShellState extends State<MainShell> {
         context,
         MaterialPageRoute(
             builder: (context) => StockDetailScreen(
-                  stockCode: stock.code,
-                  stockName: stock.name,
-                  market: stock.market,
-                  initialIsFavorite: stock.isFavorite,
+                  stock: stock,
                 )));
 
     // 상세 화면에서 관심 상태 변경되어 돌아온 경우 목록 갱신
